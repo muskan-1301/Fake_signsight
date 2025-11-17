@@ -1,4 +1,6 @@
 **S I G N S I G H T**
+
+
 Seamless Interpretation & Gesture Navigation System
 
 SignSight is a real-time Sign Language Recognition system designed to translate hand gestures into English alphabets, digits, and basic words. Built using YOLO, OpenCV, and Streamlit, the project aims to support inclusive communication with a fast, intuitive, and modern UI.
