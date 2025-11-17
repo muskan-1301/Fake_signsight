@@ -1,121 +1,159 @@
-S.I.G.N.S.I.G.H.T. — Seamless Interpretation, Gesture Navigation & Smart Interactive Gesture Handling Tool
+**S I G N S I G H T**
+Seamless Interpretation & Gesture Navigation System
 
-SignSight is a real-time Sign Language Recognition system built to translate hand gestures into English alphabets, digits, and simple words. Powered by YOLO-based gesture detection and deployed through Streamlit, the system focuses on accessibility, accuracy, and an intuitive visual experience.
+SignSight is a real-time Sign Language Recognition system designed to translate hand gestures into English alphabets, digits, and basic words. Built using YOLO, OpenCV, and Streamlit, the project aims to support inclusive communication with a fast, intuitive, and modern UI.
 
-Its goal is to support inclusive communication by offering fast, lightweight gesture recognition adapted for academic, assistive, and experimental use-cases.
+The system is optimized for students, developers, and assistive technology experiments, delivering smooth inference and stable gesture detection.
 
-_____________________________________________________________________________________________________________________________________
+⸻ **Overview**
 
-Overview
+SignSight captures live webcam input, detects hand signs using a custom-trained YOLO model, and outputs predictions with smoothing for higher stability.
+Features include fingerspelling mode, word detection, and a minimal, accessible interface.
 
-SignSight analyzes live webcam input, detects the user’s hand sign, and instantly maps it to the predicted character or word. A smoothing system and prediction history maintain stability even in noisy environments.
+With Streamlit’s responsive UI design and lightweight model loading, SignSight is ideal for demos, academic projects, and rapid experimentation.
 
-The interface is optimized for readability and real-time feedback, offering fingerspelling mode, word mode, and customizable detection settings. With a streamlined design and efficient model loading, SignSight supports gesture recognition without GPU dependency.
+⸻ **Key Features**
 
-_____________________________________________________________________________________________________________________________________
+**🎯 Real-Time Gesture Detection**
 
-Key Features
-Real-Time Detection
+● YOLO-based sign recognition
 
-YOLO-powered model for alphabets (A–Z), digits (0–9), and basic words.
+● Supports A–Z alphabets, 0–9 digits, and basic words
 
-Fast inference using optimized frame processing.
+● High-confidence filtering for accuracy
 
-History-based smoothing for stable predictions.
 
-Fingerspelling Mode
 
-Detects multiple sequential alphabets.
+**🔤 Fingerspelling Mode**
 
-Builds words letter-by-letter for practice or learning use.
+● Predicts letters sequentially
 
-Word Recognition
+● Builds words character-by-character
 
-Predicts complete gestures mapped to pre-trained sign classes.
+● Ideal for ASL practice and learning
 
-Ideal for basic sign vocabulary demonstrations.
 
-Modern Streamlit UI
 
-Clean, responsive layout with webcam preview.
+**🧠 Stable Prediction Engine**
 
-Dark/light theme adaptable styling.
+● Uses a rolling history (deque)
 
-Minimal distractions for focused gesture practice.
+● Outputs the most consistent result for stable detection
 
-Lightweight Deployment
 
-Runs on CPU.
 
-No heavy libraries beyond OpenCV, Streamlit, and Ultralytics.
+**🎨 Modern Streamlit UI**
 
-_____________________________________________________________________________________________________________________________________
+● Clean, intuitive layout
 
-Methodology
+●Live camera feed preview
 
-SignSight follows a structured pipeline based on computer vision, gesture detection, and dynamic result refinement.
+● Responsive and minimal design
 
-Frame Capture
-The webcam feed is processed using OpenCV with optimized frame resizing for better inference speed.
 
-Gesture Detection
-A YOLO model predicts bounding boxes and gesture classes in real time.
 
-Confidence Filtering
-Only predictions above a threshold are considered to ensure reliable output.
+**⚡ Efficient & Lightweight**
 
-History Smoothing
-A deque stores recent predictions, and the most frequent label is chosen to stabilize output.
+● Runs smoothly on CPU
 
-Display Engine
-Streamlit renders the real-time camera feed, overlays predictions, and maintains a clean, responsive interface.
+● Supports manual or automatic model loading
 
-This methodology ensures accurate gesture interpretation even under varying lighting, background noise, or hand movement.
 
-_____________________________________________________________________________________________________________________________________
 
-Installation
-1. Clone the repository
+
+⸻ **Methodology**
+
+1. Frame Capture
+
+Input frames are processed via OpenCV with optimized resizing.
+
+2. YOLO-Based Detection
+
+Each frame is passed through the trained YOLO model for class predictions.
+
+3. Confidence Thresholding
+
+Low-confidence predictions are filtered out.
+
+4. History-Based Smoothing
+
+A rolling buffer stores past predictions to improve stability.
+
+5. Streamlit Rendering
+
+The UI displays the live feed and predictions in real time.
+
+This workflow ensures balance between speed, accuracy, and stability.
+
+⸻ **Model Downloads**
+
+Your YOLO models are stored in Google Drive due to size limits.
+
+📦 Letters Model (256 MB)
+
+Direct Download:
+👉 https://drive.google.com/uc?export=download&id=1IvBFgoHSmMqUC8qWTFfah7T0HMyvhQck
+
+🔢 Digits Model (85 MB)
+
+Direct Download:
+👉 https://drive.google.com/uc?export=download&id=1XhB9wbBni09N90GHhAUFUBWJfFh2H2zO
+
+⚠️ Place downloaded models in:
+```
+project/
+ └── model/
+      ├── letters.pt
+      └── digits.pt
+```
+
+⸻ Installation
+1.  Clone the Repository
+```
 git clone https://github.com/muskan-1301/Fake_signsight.git
 cd Fake_signsight
+```
 
-2. Install dependencies
+2.  Install Dependencies
+```
 pip install -r requirements.txt
+```
 
-3. Run the application
+3.  Run the Application
+```
 streamlit run app.py
+```
 
-
-_____________________________________________________________________________________________________________________________________
-
-Project Structure
-/SignSight
+⸻ Project Structure
+```
+SignSight/
 │
-├── app.py              # Main Streamlit application
-├── model/              # YOLO model files
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
+├──test.py                 # run locally
+├── app.py                 # Main application file
+├── model/                 # YOLO model files (download & place here)
+│     ├── letters.pt
+│     └── digits.pt
+├── requirements.txt       # Python dependencies
+└── README.md              # Documentation
+```
+
+⸻ **Future Improvements**
+
+● Two-hand gesture support
+
+● Larger ASL word vocabulary
+
+● Auto-spacing for fingerspelling
+
+● Noise-resistant low-light tracking
+
+● TensorFlow Lite mobile version
+
+● Speech output integration
 
 
-_____________________________________________________________________________________________________________________________________
 
-Future Improvements
 
-Fingerspelling auto-word formation with spacing logic
+**NOTE:**
 
-ASL full-word dictionary expansion
-
-Multi-hand detection and two-hand gestures
-
-Noise-resistant tracking for low-light conditions
-
-Exportable detection logs for research/education
-
-Mobile app deployment (Flutter + TensorFlow Lite)
-
-_____________________________________________________________________________________________________________________________________
-
-License
-
-This project is for educational purpose only,
-
+This project was created for academic/educational purposes only.
